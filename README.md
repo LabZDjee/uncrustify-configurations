@@ -40,6 +40,7 @@ In all cases, code inside braces is indented
 - No parenthesis after `return` statement
 - No more than one empty line
 - One space after `if`, `switch`, `while`
+- Star (*) dereference operator with no space on the left (type) and one space on the right (pointer)
 - Almost no meddling with comments
 
 # References
