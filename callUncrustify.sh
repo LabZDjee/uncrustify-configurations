@@ -1,8 +1,8 @@
 #!/bin/bash
 # executes uncrustify in the current folder on all .c and .h files
-# only updates files which differ after the operation (avoiding tampering with file timestamps
+# only updates files which differ after the operation (avoiding tampering with file timestamps)
 
-# parameters 
+# parameters (for path specification, for instance)
 UNCRUSTIFY_APP="uncrustify"
 CONFIGURATION_FILE="uncrustify.cfg"
 
@@ -19,7 +19,7 @@ do
    SILENT=1
    ;;
   --help)
-   echo 'uncrustify .c and .h C files in the current folder'
+   echo 'uncrustify on .c and .h C files in the current folder'
    echo ' only modifed files are rewritten'
    echo 'optional parameters:'
    echo ' -q --quiet: does not display anything'
