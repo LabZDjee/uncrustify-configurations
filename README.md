@@ -43,6 +43,12 @@ In all cases, code inside braces is indented
 - Star (*) dereference operator with no space on the left (type) and one space on the right (pointer)
 - Almost no meddling with comments
 
+# Script for Automation
+
+A bash script is written to enable all C files to *uncrustify* in its contained folder
+
+Result is *diff*ed which makes only modified files are rewritten (which preserves time stamps)
+
 # References
 
 *Uncrustify*: https://github.com/uncrustify/uncrustify
