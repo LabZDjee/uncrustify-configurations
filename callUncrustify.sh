@@ -10,6 +10,7 @@ CONFIGURATION_FILE="uncrustify.cfg"
 TEMP_FILE="___uncrustify_output___.tmp"
 SILENT=0
 SINGLE_FILE=""
+NB_FILES_UNCRUSTIFIED=0
 
 # process parameters
 for i
@@ -48,9 +49,11 @@ function doUncrust() {
  else
   echo $1 UNCRUSTIFIED! 2>&1
   mv ${TEMP_FILE} $1
+  NB_FILES_UNCRUSTIFIED=$((NB_FILES_UNCRUSTIFIED + 1))
  fi
 }
 
+echo "Uncrustification started" 2>&1
 if [[ -z ${SINGLE_FILE} ]]
 then
  for FILE in *.c *.h
@@ -60,3 +63,4 @@ then
 else
  doUncrust ${SINGLE_FILE}
 fi
+echo "Done - ${NB_FILES_UNCRUSTIFIED} file(s) uncrustified" 2>&1
