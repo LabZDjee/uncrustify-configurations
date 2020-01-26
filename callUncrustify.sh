@@ -62,7 +62,7 @@ fi
 
 # the actual job
 function doUncrust() {
- ${UNCRUSTIFY_APP} -f $1 -c ${CONFIGURATION_FILE} -o ${TEMP_FILE}
+ ${UNCRUSTIFY_APP} -f $1 -c ${CONFIGURATION_FILE} -o ${TEMP_FILE} >/dev/null 2>&1
  diff --brief $1 ${TEMP_FILE} >/dev/null 2>&1
  if [[ $? -eq 0 ]]
  then
