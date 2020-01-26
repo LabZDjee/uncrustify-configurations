@@ -36,6 +36,7 @@ do
    echo ' -r --recursive: recursively process of files'
    echo ' -u=... --uncrustify=...: defines the uncrustify app to use'
    echo " \"<pattern>\": redefines file <pattern> instead \"${DEF_PATTERN}\" (\"${DEF_RPATTERN}\" if recursive)"
+   echo "              caveat: surrounding double-quotes (\"...\") matter much!"
    exit
    ;;
   *)
@@ -77,7 +78,7 @@ function doUncrust() {
 echo "Uncrustification started" 2>&1
 shopt -s globstar
 FILE_LIST="${FILE_PATTERN}"
- for FILE in $FILE_LIST
+for FILE in $FILE_LIST
  do
   doUncrust ${FILE}
  done
