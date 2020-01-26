@@ -9,7 +9,6 @@ CONFIGURATION_FILE="uncrustify.cfg"
 # variables
 TEMP_FILE="___uncrustify_output___.tmp"
 SILENT=0
-PATH_TO_SRC_FILES=""
 NB_FILES_UNCRUSTIFIED=0
 DEF_PATTERN='*.[ch]'
 DEF_RPATTERN='*.[ch] ./**/*.[ch]'
