@@ -18,6 +18,9 @@ FILE_PATTERN=$DEF_PATTERN
 for i
 do
  case "$i" in
+  -c=*|--config=*)
+   CONFIGURATION_FILE="${i#*=}"
+   ;;
   -q|--quiet)
    SILENT=1
    ;;
@@ -32,8 +35,9 @@ do
    echo 'uncrustify on .c and .h C files in the current folder'
    echo ' only modifed files are rewritten'
    echo 'optional parameters:'
+   echo ' -c=... --config=...: defines configuration file to use'
    echo ' -q --quiet: does not display anything'
-   echo ' -r --recursive: recursively process of files'
+   echo ' -r --recursive: recursive process of files'
    echo ' -u=... --uncrustify=...: defines the uncrustify app to use'
    echo " \"<pattern>\": redefines file <pattern> instead \"${DEF_PATTERN}\" (\"${DEF_RPATTERN}\" if recursive)"
    echo "              caveat: surrounding double-quotes (\"...\") matter much!"
