@@ -55,7 +55,7 @@ then
  echo "failure: cannot run ${UNCRUSTIFY_APP} app"
  echo "it is possible to define the app with option -u=<uncrustifyApp>"
  echo "note: under Windows, it seems necessary to specify the '.exe' extension"
- echo "        and shortcut '-u=.exe' on command line ensures this specification"
+ echo "        and shortcut '-u=.exe' on command line adds this extension"
  exit
 fi
 
@@ -67,15 +67,20 @@ fi
 
 # the actual job
 function doUncrust() {
- ${UNCRUSTIFY_APP} -f $1 -c ${CONFIGURATION_FILE} -o ${TEMP_FILE} >/dev/null 2>&1
- diff --brief $1 ${TEMP_FILE} >/dev/null 2>&1
- if [[ $? -eq 0 ]]
+ if [[ -f $1 ]]
  then
-  rm ${TEMP_FILE}
+  ${UNCRUSTIFY_APP} -f $1 -c ${CONFIGURATION_FILE} -o ${TEMP_FILE} >/dev/null 2>&1
+  diff --brief $1 ${TEMP_FILE} >/dev/null 2>&1
+  if [[ $? -eq 0 ]]
+  then
+   rm ${TEMP_FILE}
+  else
+   echo $1 UNCRUSTIFIED! 2>&1
+   mv ${TEMP_FILE} $1
+   NB_FILES_UNCRUSTIFIED=$((NB_FILES_UNCRUSTIFIED + 1))
+  fi
  else
-  echo $1 UNCRUSTIFIED! 2>&1
-  mv ${TEMP_FILE} $1
-  NB_FILES_UNCRUSTIFIED=$((NB_FILES_UNCRUSTIFIED + 1))
+  echo "$1 not found!" >/dev/null 2>&1
  fi
 }
 
